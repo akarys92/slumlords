@@ -1,0 +1,17 @@
+<table>
+	<tr>
+		<td> <strong>Address</strong></td>
+		<td> <strong>Lattitude</strong></td>
+		<td> <strong>Longitude</strong></td>
+		<td> <strong>Owner</strong></td>
+		<td> <strong>Review</strong></td>
+	</tr>
+
+	<tr ng-repeat="property in vm.properties">
+		<td>{{property.street_address}}</td>
+		<td>{{property.lattitude}}</td>
+		<td>{{property.longitude}}</td>
+		<td>{{property.owner}}</td>
+		<td>{{property.review}}</td>
+	</tr>
+</table>
