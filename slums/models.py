@@ -34,16 +34,33 @@ class Landlord(models.Model):
 #Going to have to change creation logic as well as serializers
 class Property(models.Model):
 	tenant = models.ForeignKey(User)
-	street_address = models.CharField(max_length=100)
+	street_address = models.CharField(max_length=500)
+	apt_number = models.CharField(max_length=10)
 	lattitude = models.FloatField()
 	longitude = models.FloatField()
 	review = models.CharField(max_length=1000)
-	#ADDED
+	rent = models.FloatField()
+	tenants = models.IntegerField()
 	owner = models.ForeignKey(Landlord)
 
 class Rev(models.Model):
 	prop = models.ForeignKey(Property)
 	text = models.CharField(max_length=1000)
 	rating = models.IntegerField()
+
+class LandLordRate(models.Model):
+	owner = models.ForeignKey(Landlord)
+	rating = models.IntegerField()
+	review = models.CharField(max_length=5000)
+	availability = models.IntegerField()
+	helpfulness = models.IntegerField()
+
+
+class PropertyRate(models.Model):
+	Property = models.ForeignKey(Property)
+	rating = models.IntegerField()
+	review = models.CharField(max_length=5000)
+
+
 
 

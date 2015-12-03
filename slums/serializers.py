@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from slums.models import  User, Landlord, Property
+from slums.models import  User, Landlord, Property, PropertyRate, LandLordRate
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -14,10 +14,20 @@ class LandLordSerializer(serializers.ModelSerializer):
 class PropertySerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Property
-		fields = ('street_address', 'lattitude', 'longitude', 'tenant', 'owner', 'review')
+		fields = ('street_address', 'apt_number', 'lattitude', 'longitude', 'tenant', 'owner', 'review', 'rent', 'tenants')
 
 class PropertyReturnSerializer(serializers.ModelSerializer):
 	Landlord = serializers.StringRelatedField()
 	class Meta:
 		model = Property
-		fields = ('street_address', 'lattitude', 'longitude', 'Landlord', 'review')
+		fields = ('street_address', 'apartment_number' ,'lattitude', 'longitude', 'Landlord', 'review')
+
+class PropertyRatingSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = PropertyRate
+		fields = ('Property', 'rating', 'review')
+
+class LandlordRatingSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = LandLordRate
+		fields = ('owner', 'rating', 'review')

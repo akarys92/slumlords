@@ -1,0 +1,22 @@
+Things I want to do:
+- Define rating schema for properties and Landlords
+	- Implement in model
+	- Create serializers
+	- Link in API endpoints
+		- Should these be edittable?
+		- Should they be accessible independently?
+- Create authentication system
+- Create functions that return averages for properties and landlords
+- Want to add monthly rent field
+- Add optional Company field for landlord (for management companies)
+- Add number of occupants to property model
+
+
+- Landlord ratings
+	- Communication
+	- Responsibility
+	- 
+- Property Ratings
+	- Condition
+	- Location?
+	- 

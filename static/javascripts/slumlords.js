@@ -4,7 +4,8 @@
 		.module('slumlords', [
 			'slumlords.config',
 			'slumlords.routes',
-			'slumlords.main'
+			'slumlords.main',
+			'ui.bootstrap'
 		]);
 	angular
 		.module('slumlords.routes', ['ngRoute']);
