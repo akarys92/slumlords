@@ -1,0 +1,106 @@
+html {
+	/*margin-left: 15px !important;*/
+}
+div {
+	/*border: black 1pt solid;*/
+}
+header {
+	height: 15%;
+}
+.row {
+	margin: none !important;
+}
+.top-section {
+	height: 100%;
+	width: 100%;
+}
+.logo {
+	border: 1px black solid;
+	height: 100% !important;
+}
+.nav-rows {
+	height: 100%;
+}
+.nav-row {
+	border-bottom: 1px black solid;
+	border-top: 1px black solid;
+	height: 50%;
+}
+.top-row {
+
+}
+.bottom-row {
+
+}
+.main-section {
+	height: 85%;
+	width: 100%;
+}
+.side-panel {
+	border-right: 1px solid black;
+	height: 100%;
+}
+.search-box{
+	border: none !important;
+}
+.main-panel {
+
+}
+.side-header {
+	border-bottom: black 1pt solid;
+
+}
+.side-body {
+	overflow-y: scroll;
+	overflow-x: hidden;
+	height: 85%; 
+}
+.address-tile {
+	height: 150px;
+	border-bottom: 1pt black solid;
+
+}
+.side-title {
+	margin-left: 20px !important;
+
+}
+.side-select {
+	/*border-bottom: 1px black solid;*/
+	margin-left: -15px;
+}
+.address-tile .tile-header {
+	margin-left: 25px;
+}
+.star-rating {
+	margin-left: 35px !important;
+}
+.tile-info {
+	margin-left: 35px !important;
+}
+.login-box {
+	border: black solid 1px;
+	height:100%;
+}
+.login-button {
+	position: relative;
+  	top: 25%;
+  	height: 100%;
+}
+.search-container {
+
+}
+.button-container {
+	border: black 1pt solid;
+	height: 100%;
+	text-align: center;
+	margin: auto;
+}
+.button-text {
+ 	position: relative;
+  	top: 25%;
+ }
+ .top-nav .no-border-button {
+ 	position: relative;
+  	top: 25%;
+  	height: 100%;
+ }

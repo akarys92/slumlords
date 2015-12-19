@@ -25,7 +25,8 @@ class PropertyReturnSerializer(serializers.ModelSerializer):
 class PropertyRatingSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = PropertyRate
-		fields = ('Property', 'rating', 'review')
+		fields = ('Property', 'rent', 'tenants', 'rating', 'love_review', 'hate_review', 'text-review')
+
 
 class LandlordRatingSerializer(serializers.ModelSerializer):
 	class Meta:

@@ -9,7 +9,7 @@
                     controller: 'LandLordController', 
                     controllerAs: 'vm',
                     templateUrl: '/static/templates/main/createLandLord.html'
-               })
+          })
           .when('/home',{
                controller: 'HomeController',
                controllerAs: 'vm',

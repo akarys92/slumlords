@@ -1,0 +1,209 @@
+<html lang="en" ng-app='slumlords'>
+	<head>
+		{% include 'style.html' %}
+	</head>
+	<body>
+		<header>
+			<!-- Top section contains a logo and two rows of navigation bars -->
+			<!--<div class="top-section">
+				<div class="col-sm-3 logo"></div>
+				<div class="col-sm-9">	
+					<div class="row nav-row top-nav">
+						<a class="login-box pull-right">
+							<span class="col-sm-2 login-button">
+								<div>Login</div>
+							</span>
+						</a>
+						<a class="no-border-button col-sm-2 pull-right">
+							Settings
+						</a>
+						<a class="no-border-button col-sm-2 pull-right">
+							About Us
+						</a>
+						<a class="no-border-button col-sm-2 pull-right">
+							Home
+						</a>
+						
+					</div>
+					<div class="row nav-row bottom-nav">
+						<div class="search-container col-sm-6">	
+							<nav>
+								<form class="navbar-form navbar-left" role="search">
+									<div class="form-group search-box">
+										<input type="text" class="form-control" style="width:250px" placeholder="Search address or name">
+										
+									</div>
+								</form>
+							</nav>
+						</div>
+						<a class="button-container col-sm-3">
+							<span class="button-text">Create Review</span>
+						</a>
+						<a class="button-container col-sm-3">
+							<span class="button-text">My Profile</span>
+						</a>
+
+					</div>
+				</div>
+			</div>-->
+			{% include 'navbar.html' %}
+			<!-- END top-section -->
+		</header>
+		<!-- Main section is a container that will contain the body of the site -->
+		<div class="main-section">
+			<!-- Side Panel will contain information about what goes on in the middle/map panel -->
+			<div class="col-sm-3 side-panel">
+				<div class="row side-header">
+					<div class="row side-title">
+						<h4>Properties By: </h4>
+					</div>
+					<div class="row side-select">
+						<div class="col-sm-5 pull-right">
+							<a><h5>Address</h5></a>
+						</div>
+						<div class="col-sm-5 pull-right">
+							<a><h5>Landlord</h5></a>
+						</div>
+					</div>
+				</div>
+				<!-- Side Body tiles will go here and overflow scroll -->
+				<div class="row side-body">
+					<!-- Address tile -->
+					<div class="row address-tile">
+						<div class="row tile-header">
+							<h5>
+								<a>528 Pontius Ave N</a>
+							</h5>
+						</div>
+						<div class="row star-rating">
+							<!--<input type="hidden" class="rating" data-stop="5" data-step="0"/>-->
+							<input type="hidden" class="rating" value="3" data-readonly/>   3 of 5 (<a>10 Reviews</a>)
+						</div>
+						<div class="row tile-info">
+							Total Units: 10+
+						</div>
+						<div class="row tile-info">
+							Rent Range: $1400-$2000
+						</div>
+						<div class="row tile-info">
+							Landlord: N/A
+						</div>
+						<div class="row tile-info">
+							Management: AMLI Management
+						</div>						
+					</div>
+					<!-- END address tile -->
+					<!-- Address tile -->
+					<div class="row address-tile">
+						<div class="row tile-header">
+							<h5>
+								<a>528 Pontius Ave N</a>
+							</h5>
+						</div>
+						<div class="row star-rating">
+							<!--<input type="hidden" class="rating" data-stop="5" data-step="0"/>-->
+							<input type="hidden" class="rating" value="3" data-readonly/>   3 of 5 (<a>10 Reviews</a>)
+						</div>
+						<div class="row tile-info">
+							Total Units: 10+
+						</div>
+						<div class="row tile-info">
+							Rent Range: $1400-$2000
+						</div>
+						<div class="row tile-info">
+							Landlord: N/A
+						</div>
+						<div class="row tile-info">
+							Management: AMLI Management
+						</div>						
+					</div>
+					<!-- END address tile -->
+					<!-- Address tile -->
+					<div class="row address-tile">
+						<div class="row tile-header">
+							<h5>
+								<a>528 Pontius Ave N</a>
+							</h5>
+						</div>
+						<div class="row star-rating">
+							<!--<input type="hidden" class="rating" data-stop="5" data-step="0"/>-->
+							<input type="hidden" class="rating" value="3" data-readonly/>   3 of 5 (<a>10 Reviews</a>)
+						</div>
+						<div class="row tile-info">
+							Total Units: 10+
+						</div>
+						<div class="row tile-info">
+							Rent Range: $1400-$2000
+						</div>
+						<div class="row tile-info">
+							Landlord: N/A
+						</div>
+						<div class="row tile-info">
+							Management: AMLI Management
+						</div>						
+					</div>
+					<!-- END address tile -->
+					<!-- Address tile -->
+					<div class="row address-tile">
+						<div class="row tile-header">
+							<h5>
+								<a>528 Pontius Ave N</a>
+							</h5>
+						</div>
+						<div class="row star-rating">
+							<!--<input type="hidden" class="rating" data-stop="5" data-step="0"/>-->
+							<input type="hidden" class="rating" value="3" data-readonly/>   3 of 5 (<a>10 Reviews</a>)
+						</div>
+						<div class="row tile-info">
+							Total Units: 10+
+						</div>
+						<div class="row tile-info">
+							Rent Range: $1400-$2000
+						</div>
+						<div class="row tile-info">
+							Landlord: N/A
+						</div>
+						<div class="row tile-info">
+							Management: AMLI Management
+						</div>						
+					</div>
+					<!-- END address tile -->
+					<!-- Address tile -->
+					<div class="row address-tile">
+						<div class="row tile-header">
+							<h5>
+								<a>528 Pontius Ave N</a>
+							</h5>
+						</div>
+						<div class="row star-rating">
+							<!--<input type="hidden" class="rating" data-stop="5" data-step="0"/>-->
+							<input type="hidden" class="rating" value="3" data-readonly/>   3 of 5 (<a>10 Reviews</a>)
+						</div>
+						<div class="row tile-info">
+							Total Units: 10+
+						</div>
+						<div class="row tile-info">
+							Rent Range: $1400-$2000
+						</div>
+						<div class="row tile-info">
+							Landlord: N/A
+						</div>
+						<div class="row tile-info">
+							Management: AMLI Management
+						</div>						
+					</div>
+					<!-- END address tile -->
+				</div>
+				<!-- END Side Body -->
+			</div>
+			<!-- END side panel -->
+			<!-- Main Panel will contain the action of the site, the map and later profile information -->
+			<div class="col-sm-9 main-panel"></div>
+			<!-- END main panel -->
+		</div>
+		<!-- END main-section -->
+	</body>
+	<footer>
+		{% include 'javascripts.html' %}
+	</footer>
+</html>

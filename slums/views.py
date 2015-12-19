@@ -128,6 +128,7 @@ def landlord_api(request):
 				'longitude': request.DATA.get('longitude')
 			}
 
+			#prop = createProperty(propInfo, request.DATA.get('review'), owner)
 			prop = createProperty(propInfo, request.DATA.get('review'), owner)
 			print prop
 			print "\n\n\n"
@@ -164,7 +165,6 @@ def property_info(request, landlordId):
 	dataObj = {'landlord': landlordSerializer.data, 'properties': propSerializer.data}
 	print dataObj
 	return Response(dataObj)
-
 
 
 

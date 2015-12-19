@@ -27,22 +27,19 @@ class User(AbstractBaseUser):
 class Landlord(models.Model):
 	first_name = models.CharField(max_length=30)
 	last_name = models.CharField(max_length=30)
-	#properties = models.ManyToManyField(Property)
 	added_on = models.DateTimeField(auto_now_add=True)
 
 #Property should have a foreign key field to Landlord titled 'owner' instead of the current many to many setup. 
 #Going to have to change creation logic as well as serializers
 class Property(models.Model):
+	# Don't think this is needed
 	tenant = models.ForeignKey(User)
 	street_address = models.CharField(max_length=500)
 	apt_number = models.CharField(max_length=10)
 	lattitude = models.FloatField()
 	longitude = models.FloatField()
-	review = models.CharField(max_length=1000)
-	rent = models.FloatField()
-	tenants = models.IntegerField()
 	owner = models.ForeignKey(Landlord)
-
+	
 class Rev(models.Model):
 	prop = models.ForeignKey(Property)
 	text = models.CharField(max_length=1000)
@@ -55,11 +52,14 @@ class LandLordRate(models.Model):
 	availability = models.IntegerField()
 	helpfulness = models.IntegerField()
 
-
 class PropertyRate(models.Model):
 	Property = models.ForeignKey(Property)
+	rent = models.FloatField()
+	tenants = models.IntegerField()
 	rating = models.IntegerField()
-	review = models.CharField(max_length=5000)
+	love_review = models.CharField(max_length=1000)
+	hate_review = models.CharField(max_length=1000)
+	text_review = models.CharField(max_length=5000)
 
 
 
