@@ -4,9 +4,9 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 
-from slums.serializers import UserSerializer, LandLordSerializer, PropertySerializer, PropertyReturnSerializer
+from slums.serializers import UserSerializer, LandLordSerializer, PropertySerializer, PropertyReturnSerializer, PropertyRatingSerializer
 
-from slums.models import User, Landlord, Property
+from slums.models import User, Landlord, Property, PropertyRate
 
 import helpers
 
@@ -18,15 +18,15 @@ def createProperty(propInfo, propReview, owner):
 	#create property object
 	#add prop to user
 	#print "In createProperty... \n\n\n"
-	print "In createProperty"
-	print propInfo
-	print "\n\n\n"
+	#print "In createProperty"
+	#print propInfo
+	#print "\n\n\n"
 	try:
-		print "Found propertry \n\n\n"
+		#print "Found propertry \n\n\n"
 		prop = Property.objects.get(street_address=propInfo)
 
 	except Property.DoesNotExist:
-		print propInfo['prettyAddress']
+		#print propInfo['prettyAddress']
 		# REMOVE THIS
 		user_info = {"username": "test", "email": "test@test.test"}
 		userializer = UserSerializer(data=user_info)
@@ -34,15 +34,15 @@ def createProperty(propInfo, propReview, owner):
 		if userializer.is_valid():
 			userializer.save()
 		# TO HERE
-		propData = {"street_address": propInfo['prettyAddress'], "apt_number": propInfo['apartment_number'], "lattitude": propInfo['lattitude'], "longitude": propInfo['longitude'], "tenant": 1, "owner": owner.id, "review": propReview, "rent": 1.0, "tenants": 1} #DUMMY DATA
-		print propData
+		propData = {"street_address": propInfo['prettyAddress'], "apt_number": propInfo['apartment_number'], "lattitude": propInfo['lattitude'], "longitude": propInfo['longitude'], "owner": owner.id, "tenant": 1} #DUMMY DATA
+		#print propData
 		#this is not working!!!
 		propSerializer = PropertySerializer(data=propData)
 
 		if propSerializer.is_valid():
 			prop = propSerializer.save()
 		else:
-			print propSerializer.errors
+			#print propSerializer.errors
 			return HttpResponse(status=500)
 		
 
@@ -103,20 +103,20 @@ def landlord_api(request):
 		if serializer.is_valid():
 
 			owner = Landlord.objects.filter(first_name=request.DATA.get('first_name')).filter(last_name=request.DATA.get('last_name'))
-			print "There\n\n\n"
+			#print "There\n\n\n"
 			if len(owner) > 0:
 				owner = owner[0]
-				print "Owner Found"
+				#print "Owner Found"
 			else:
 				owner = serializer.save()
-				print "Creating new owner"
+				#print "Creating new owner"
 			
 			prettyAddress = helpers.makePrettyAddress(request.DATA.get('address'), request.DATA.get('apartment_number'), request.DATA.get('city'), request.DATA.get('state'), request.DATA.get('zip'))
-			print "here"
+			#print "here"
 			#prettyAddress = request.DATA.get('address') + " Apt" + request.DATA.get('apartment_number') +  ", " + request.DATA.get('city') + ", " + request.DATA.get('state') + " " + request.DATA.get('zip')
-			print prettyAddress
+			#print prettyAddress
 			aptNum = helpers.aptScrub(request.DATA.get('apartment_number'))
-			print aptNum
+			#print aptNum
 			propInfo = {
 				'prettyAddress': prettyAddress,
 				'address': request.DATA.get('address'),
@@ -130,8 +130,8 @@ def landlord_api(request):
 
 			#prop = createProperty(propInfo, request.DATA.get('review'), owner)
 			prop = createProperty(propInfo, request.DATA.get('review'), owner)
-			print prop
-			print "\n\n\n"
+			#print prop
+			#print "\n\n\n"
 			return Response(serializer.data, status=status.HTTP_201_CREATED)
 		return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 @api_view(['GET'])
@@ -149,24 +149,42 @@ def property_by_landlord(request, landlordId):
 @api_view(['GET'])
 def property_info(request, landlordId):
 
-	print landlordId
+	#print landlordId
 	llId = landlordId
 	landlord = Landlord.objects.get(pk=llId)
-	print "HERE"
+	#print "HERE"
 	landlordSerializer = LandLordSerializer(landlord)
-	print "There"
+	#print "There"
 	#print landlordSerializer.data
 
 	props = Property.objects.filter(owner=llId)
-	print "blah"
+	#print "blah"
 	propSerializer = PropertySerializer(props, many=True)
 
-	print propSerializer.data
+	#print propSerializer.data
 	dataObj = {'landlord': landlordSerializer.data, 'properties': propSerializer.data}
-	print dataObj
+	#print dataObj
 	return Response(dataObj)
 
-
-
+@api_view(['GET', 'POST'])
+def propRev_api(request):
+	if request.method == 'GET':
+		revs = PropertyRate.objects.all()
+		serializer = PropertyRatingSerializer(revs, many=True)
+		return Response(serializer.data)
+	elif request.method == 'POST':
+		# {"propId": 1, "rent": 1000, "tenants": 3, "rating": 4, "loveRev":"Things are not bad", "hateRev":"things are really bad", "textRev":"that pretty much sums it up"}
+		revData = {'Property': request.DATA.get('propId'), 'rent': request.DATA.get('rent'), 'tenants': request.DATA.get('tenants'), 'rating': request.DATA.get('rating'), 'love_review':request.DATA.get('loveRev'), 'hate_review': request.DATA.get('hateRev'), 'text_review': request.DATA.get('textRev')}
+		serializer = PropertyRatingSerializer(data=revData)
+		if serializer.is_valid():
+			serializer.save()
+			return Response(serializer.data, status=status.HTTP_201_CREATED)
+		else:
+			return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST) 
+@api_view(['GET'])
+def propRev_by_propId(request, propId):
+	revs = PropertyRate.objects.filter(Property = propId)
+	serializer = PropertyRatingSerializer(revs, many=True)
+	return Response(serializer.data)
 
 

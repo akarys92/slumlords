@@ -1,45 +1,196 @@
-<div>
-	<div class="left-panel pull-left">
-		<table>
-			<tr>
-				<td> <strong>Name</strong></td>
-			</tr>
-
-			<tr ng-repeat="landlord in vm.landlords">
-				<td>
-					<a ng-click="vm.getLandlordById($index)">{{landlord.first_name}} {{landlord.last_name}}</a>
-				</td>
-			</tr>
-		</table>
+<div class="main-section">
+	<!-- Side Panel will contain information about what goes on in the middle/map panel -->
+	<div class="col-sm-3 side-panel">
+		<div class="row side-header">
+			<div class="row side-title">
+				<h4>Properties By: </h4>
+			</div>
+			<div class="row side-select">
+				<div class="col-sm-5 pull-right">
+					<a><h5>Address</h5></a>
+				</div>
+				<div class="col-sm-5 pull-right">
+					<a><h5>Landlord</h5></a>
+				</div>
+			</div>
+		</div>
+		<!-- Side Body tiles will go here and overflow scroll -->
+		<div class="row side-body">
+			<!-- Address tile -->
+			<div class="row address-tile">
+				<div class="row tile-header">
+					<h5>
+						<a>528 Pontius Ave N</a>
+					</h5>
+				</div>
+				<div class="row star-rating">
+					<!--<input type="hidden" class="rating" data-stop="5" data-step="0"/>-->
+					<input type="hidden" class="rating" value="3" data-readonly/>   3 of 5 (<a>10 Reviews</a>)
+				</div>
+				<div class="row tile-info">
+					Total Units: 10+
+				</div>
+				<div class="row tile-info">
+					Rent Range: $1400-$2000
+				</div>
+				<div class="row tile-info">
+					Landlord: N/A
+				</div>
+				<div class="row tile-info">
+					Management: AMLI Management
+				</div>						
+			</div>
+			<!-- END address tile -->
+			<!-- Address tile -->
+			<div class="row address-tile">
+				<div class="row tile-header">
+					<h5>
+						<a>528 Pontius Ave N</a>
+					</h5>
+				</div>
+				<div class="row star-rating">
+					<!--<input type="hidden" class="rating" data-stop="5" data-step="0"/>-->
+					<input type="hidden" class="rating" value="3" data-readonly/>   3 of 5 (<a>10 Reviews</a>)
+				</div>
+				<div class="row tile-info">
+					Total Units: 10+
+				</div>
+				<div class="row tile-info">
+					Rent Range: $1400-$2000
+				</div>
+				<div class="row tile-info">
+					Landlord: N/A
+				</div>
+				<div class="row tile-info">
+					Management: AMLI Management
+				</div>						
+			</div>
+			<!-- END address tile -->
+			<!-- Address tile -->
+			<div class="row address-tile">
+				<div class="row tile-header">
+					<h5>
+						<a>528 Pontius Ave N</a>
+					</h5>
+				</div>
+				<div class="row star-rating">
+					<!--<input type="hidden" class="rating" data-stop="5" data-step="0"/>-->
+					<input type="hidden" class="rating" value="3" data-readonly/>   3 of 5 (<a>10 Reviews</a>)
+				</div>
+				<div class="row tile-info">
+					Total Units: 10+
+				</div>
+				<div class="row tile-info">
+					Rent Range: $1400-$2000
+				</div>
+				<div class="row tile-info">
+					Landlord: N/A
+				</div>
+				<div class="row tile-info">
+					Management: AMLI Management
+				</div>						
+			</div>
+			<!-- END address tile -->
+			<!-- Address tile -->
+			<div class="row address-tile">
+				<div class="row tile-header">
+					<h5>
+						<a>528 Pontius Ave N</a>
+					</h5>
+				</div>
+				<div class="row star-rating">
+					<!--<input type="hidden" class="rating" data-stop="5" data-step="0"/>-->
+					<input type="hidden" class="rating" value="3" data-readonly/>   3 of 5 (<a>10 Reviews</a>)
+				</div>
+				<div class="row tile-info">
+					Total Units: 10+
+				</div>
+				<div class="row tile-info">
+					Rent Range: $1400-$2000
+				</div>
+				<div class="row tile-info">
+					Landlord: N/A
+				</div>
+				<div class="row tile-info">
+					Management: AMLI Management
+				</div>						
+			</div>
+			<!-- END address tile -->
+			<!-- Address tile -->
+			<div class="row address-tile">
+				<div class="row tile-header">
+					<h5>
+						<a>528 Pontius Ave N</a>
+					</h5>
+				</div>
+				<div class="row star-rating">
+					<!--<input type="hidden" class="rating" data-stop="5" data-step="0"/>-->
+					<input type="hidden" class="rating" value="3" data-readonly/>   3 of 5 (<a>10 Reviews</a>)
+				</div>
+				<div class="row tile-info">
+					Total Units: 10+
+				</div>
+				<div class="row tile-info">
+					Rent Range: $1400-$2000
+				</div>
+				<div class="row tile-info">
+					Landlord: N/A
+				</div>
+				<div class="row tile-info">
+					Management: AMLI Management
+				</div>						
+			</div>
+			<!-- END address tile -->
+		</div>
+		<!-- END Side Body -->
 	</div>
-	<div class="right-panel pull-right">
-		<div class="landlordCard">
-			<div id="map-canvas"></div>
+	<!-- END side panel -->
+	<!-- Main Panel will contain the action of the site, the map and later profile information -->
+	<div class="col-sm-9 main-panel">
+		<div>
+		<div class="left-panel pull-left">
 			<table>
 				<tr>
-					<td><h2><strong>Name:</strong> {{vm.currLandlord.name}}</h2></td>
+					<td> <strong>Name</strong></td>
 				</tr>
-				<tr>
-					<td><h4><strong>Properties: </strong></h4></td>
-				</tr>
-				<tr>
+
+				<tr ng-repeat="landlord in vm.landlords">
 					<td>
-						<table>
-							<tr ng-repeat="property in vm.currLandlord.properties">
-								<td>
-									<table>
-										<tr><td>Address: {{property.street_address}}</td></tr>
-										<tr><td>Lat/Lng: {{property.lattitude}} {{property.longitude}}</td></tr>
-										<tr><td>Reviews: {{property.review}}</td></tr>
-									</table>
-								</td>
-							</tr>
-						</table>
+						<a ng-click="vm.getLandlordById($index)">{{landlord.first_name}} {{landlord.last_name}}</a>
 					</td>
 				</tr>
 			</table>
-			<div ng-include="'/static/templates/snippets/hotPropAdd.html'"></div>
 		</div>
-			
+			<div class="right-panel pull-right">
+				<div class="landlordCard">
+					<div id="map-canvas"></div>
+					<table>
+						<tr>
+							<td><h2><strong>Name:</strong> {{vm.currLandlord.name}}</h2></td>
+						</tr>
+						<tr>
+							<td><h4><strong>Properties: </strong></h4></td>
+						</tr>
+						<tr>
+							<td>
+								<table>
+									<tr ng-repeat="property in vm.currLandlord.properties">
+										<td>
+											<table>
+												<tr><td>Address: {{property.street_address}}</td></tr>
+												<tr><td>Lat/Lng: {{property.lattitude}} {{property.longitude}}</td></tr>
+												<tr><td>Reviews: {{property.review}}</td></tr>
+											</table>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					</table>
+					<div ng-include="'/static/templates/snippets/hotPropAdd.html'"></div>
+				</div>
+			</div>
+		</div>
 	</div>
+	<!-- END main panel -->
 </div>

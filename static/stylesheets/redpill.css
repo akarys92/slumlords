@@ -48,6 +48,7 @@ header {
 }
 .side-header {
 	border-bottom: black 1pt solid;
+	height:15%;
 
 }
 .side-body {

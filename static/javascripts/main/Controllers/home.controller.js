@@ -12,6 +12,7 @@
 		vm.landlords = [];
 		vm.currLandlord = {};
 		vm.addProp = false;
+		vm.map = {};
 
 		//Functions
 		vm.getLandlordById = getLandlordById;
@@ -21,6 +22,7 @@
 		getProps();
 		getLandlords();
 		google.maps.event.addDomListener(window, 'load', buildMap);
+
 		//definitions
 		function getProps() {
 			var props = Main.getProps();
@@ -110,6 +112,8 @@
 			map.setCenter(bounds.getCenter());
 			map.fitBounds(bounds);
 			map.setZoom(map.getZoom() - 1);
+			vm.map = map;
+			console.log(vm.map.getBounds().getNorthEast().lat())
 		}
 
 		function buildPropCard(name, review, address) {

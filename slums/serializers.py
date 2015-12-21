@@ -14,18 +14,18 @@ class LandLordSerializer(serializers.ModelSerializer):
 class PropertySerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Property
-		fields = ('street_address', 'apt_number', 'lattitude', 'longitude', 'tenant', 'owner', 'review', 'rent', 'tenants')
+		fields = ('street_address', 'apt_number', 'lattitude', 'longitude', 'tenant', 'owner')
 
 class PropertyReturnSerializer(serializers.ModelSerializer):
 	Landlord = serializers.StringRelatedField()
 	class Meta:
 		model = Property
-		fields = ('street_address', 'apartment_number' ,'lattitude', 'longitude', 'Landlord', 'review')
+		fields = ('street_address', 'apartment_number' ,'lattitude', 'longitude', 'Landlord')
 
 class PropertyRatingSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = PropertyRate
-		fields = ('Property', 'rent', 'tenants', 'rating', 'love_review', 'hate_review', 'text-review')
+		fields = ('Property', 'rent', 'tenants', 'rating', 'love_review', 'hate_review', 'text_review')
 
 
 class LandlordRatingSerializer(serializers.ModelSerializer):
