@@ -17,6 +17,7 @@ Service for manipulating Landlord objects
 			getDataObj: getDataObj,
 			getLatLong: getLatLong,
 			geoRequestString: geoRequestString,
+			getPropsByBounds: getPropsByBounds,
 		};
 		return Main;
 
@@ -67,6 +68,9 @@ Service for manipulating Landlord objects
 
 			return address + city + state;
 
+		}
+		function getPropsByBounds(neLat, neLong, swLat, swLong) {
+			return $http.get('/api/property_by_bounds/neLat=' + neLat + '&neLong=' + neLong + '&swLat=' + swLat + '&swLong=' + swLong);
 		}
 	}
 })();

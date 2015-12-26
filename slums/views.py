@@ -110,7 +110,9 @@ def landlord_api(request):
 			else:
 				owner = serializer.save()
 				#print "Creating new owner"
-			
+			rating = request.DATA.get('star_rating')
+			if not rating:
+				rating = 0
 			prettyAddress = helpers.makePrettyAddress(request.DATA.get('address'), request.DATA.get('apartment_number'), request.DATA.get('city'), request.DATA.get('state'), request.DATA.get('zip'))
 			#print "here"
 			#prettyAddress = request.DATA.get('address') + " Apt" + request.DATA.get('apartment_number') +  ", " + request.DATA.get('city') + ", " + request.DATA.get('state') + " " + request.DATA.get('zip')
@@ -125,7 +127,9 @@ def landlord_api(request):
 				'state': request.DATA.get('state'),
 				'zipCode': request.DATA.get('zip'),
 				'lattitude': request.DATA.get('lattitude'),
-				'longitude': request.DATA.get('longitude')
+				'longitude': request.DATA.get('longitude'),
+				'average_review': rating,
+				'total_reviews': 1
 			}
 
 			#prop = createProperty(propInfo, request.DATA.get('review'), owner)
@@ -145,6 +149,13 @@ def property_by_landlord(request, landlordId):
 	prop = Property.objects.get(owner=landlordId)
 	serializer = PropertySerializer(prop, many=True)
 	return Response(serializer.data)
+
+@api_view(['GET'])
+def property_by_bounds(request, neLat, neLong, swLat, swLong):
+	prop = Property.objects.filter(lattitude__gte=swLat, lattitude__lte=neLat, longitude__gte=swLong, longitude__lte=neLong)
+	serializer = PropertySerializer(prop, many=True)
+	return Response(serializer.data)
+
 
 @api_view(['GET'])
 def property_info(request, landlordId):

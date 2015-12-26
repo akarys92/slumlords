@@ -9,6 +9,7 @@ urlpatterns = patterns('',
 	url(r'^api/landlord_by_id/(?P<id>\d+)$', views.landlord_by_id, name='landlord_by_id'),
 	url(r'^api/property_by_landlord/(?P<landlordId>\d+)$', views.property_by_landlord, name='property_by_landlord'),
 	url(r'^api/property_info/(?P<landlordId>\d+)$', views.property_info, name='property_info'),
+	url(r'^api/property_by_bounds/neLat=(?P<neLat>-?\d+(?:\.\d+)?)&neLong=(?P<neLong>-?\d+(?:\.\d+)?)&swLat=(?P<swLat>-?\d+(?:\.\d+)?)&swLong=(?P<swLong>-?\d+(?:\.\d+)?)$', views.property_by_bounds, name='property_by_bounds'),
 	url(r'^api/reviews/', views.propRev_api, name='reviews'),
 	url(r'^api/reviews_by_prop/(?P<propId>\d+)$', views.propRev_by_propId, name='reviews'),
 )

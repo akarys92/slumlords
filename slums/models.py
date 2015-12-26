@@ -39,6 +39,8 @@ class Property(models.Model):
 	lattitude = models.FloatField()
 	longitude = models.FloatField()
 	owner = models.ForeignKey(Landlord)
+	total_reviews = models.IntegerField()
+	average_review = models.FloatField()
 	
 class Rev(models.Model):
 	prop = models.ForeignKey(Property)

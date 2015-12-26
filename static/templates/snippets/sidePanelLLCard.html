@@ -1,0 +1,23 @@
+<div class="row address-tile">
+	<div class="row tile-header">
+		<h5>
+			<a ng-click="vm.getLandlordById($index)">{{landlord.first_name}} {{landlord.last_name}}</a>
+		</h5>
+	</div>
+	<div class="row star-rating">
+		<!--<input type="hidden" class="rating" data-stop="5" data-step="0"/>-->
+		<input type="hidden" class="rating" value="3" data-readonly/>   3 of 5 (<a>10 Reviews</a>)
+	</div>
+	<div class="row tile-info">
+		Total Units: 10+
+	</div>
+	<div class="row tile-info">
+		Rent Range: $1400-$2000
+	</div>
+	<div class="row tile-info">
+		Landlord: N/A
+	</div>
+	<div class="row tile-info">
+		Management: AMLI Management
+	</div>						
+</div>

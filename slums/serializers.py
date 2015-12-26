@@ -14,7 +14,7 @@ class LandLordSerializer(serializers.ModelSerializer):
 class PropertySerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Property
-		fields = ('street_address', 'apt_number', 'lattitude', 'longitude', 'tenant', 'owner')
+		fields = ('street_address', 'apt_number', 'lattitude', 'longitude', 'tenant', 'owner', 'total_reviews', 'average_review')
 
 class PropertyReturnSerializer(serializers.ModelSerializer):
 	Landlord = serializers.StringRelatedField()
