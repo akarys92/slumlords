@@ -7,22 +7,22 @@
 			</div>
 			<div class="row side-select">
 				<div class="col-sm-5 pull-right">
-					<a ng-click="vm.cutType = 'Address'"><h5>Address</h5></a>
+					<a ng-click="home.cutType = 'Address'"><h5>Address</h5></a>
 				</div>
 				<div class="col-sm-5 pull-right">
-					<a ng-click="vm.cutType = 'Landlord'"><h5>Landlord</h5></a>
+					<a ng-click="home.cutType = 'Landlord'"><h5>Landlord</h5></a>
 				</div>
 			</div>
 		</div>
 		<!-- Side Body tiles will go here and overflow scroll -->
 		<div class="row side-body">
-			<div ng-if="vm.cutType == 'Landlord'">
-				<div ng-repeat="landlord in vm.landlords">
+			<div ng-if="home.cutType == 'Landlord'">
+				<div ng-repeat="landlord in home.landlords">
 					<div ng-include="'/static/templates/snippets/sidePanelLLCard.html'"></div>
 				</div>
 			</div>
-			<div ng-if="vm.cutType == 'Address'">
-				<div ng-repeat="property in vm.properties">
+			<div ng-if="home.cutType == 'Address'">
+				<div ng-repeat="property in home.properties">
 					<div ng-include="'/static/templates/snippets/sidePanelPropCard.html'"></div>
 				</div>
 				
@@ -32,8 +32,13 @@
 	</div>
 	<!-- END side panel -->
 	<!-- Main Panel will contain the action of the site, the map and later profile information -->
-	<div class="col-sm-9 main-panel">
-		<slum-map currProps="vm.properties"></slum-map>
+	<div class="col-sm-9 main-panel" style="height: 100%;">
+		<!--<div ng-if="home.context == 'Map'" style="height: 100%;">-->
+			<slum-map properties="home.properties"></slum-map>
+		<!--</div>-->
+		<div ng-if="home.context == 'Props'" style="height:100%;">
+			<slum-props currProps="home.properties"></slum-props>
+		</div>
 	</div>
 	<!-- END main panel -->
 </div>

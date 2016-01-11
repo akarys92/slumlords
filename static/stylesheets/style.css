@@ -47,3 +47,13 @@ body {
     background: white;
     padding: 10px;
  }
+ .propsTile {
+ 	height: 100%;
+ }
+ .propsTile .top-panel {
+ 	height: 20%;
+ 	border: 1px solid black;
+ }
+ .propsTile .prop-reviews-panel {
+ 	
+ }

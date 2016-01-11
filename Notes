@@ -10,7 +10,7 @@ Things I want to do:
 - Want to add monthly rent field
 - Add optional Company field for landlord (for management companies)
 - Add number of occupants to property model
-
+* Tags so they can quickly assign properties to LandLords or Props
 
 - Landlord ratings
 	- Communication
@@ -20,3 +20,26 @@ Things I want to do:
 	- Condition
 	- Location?
 	- 
+
+
+Property general information, calculated reviews, Love, Hate
+______________________________
+Using Directives:
+- homeCtrl will be the main scope
+- maps and cards (and list?) will be created using directives
+- Directives will take in all necessary info from homectrl with scope
+	<myapp-contestant-editor-form contestants="ctrl.contestants">
+    	</myapp-contestant-editor-form>
+- MapsControl Directive:
+	- Needs to be passed to Home: coordinates of screen
+	- Needs to be aware of: properties
+
+HomeCtrl:
+//These are the current properties, if you are viewing by landlord this is set to the 
+properties that the landlord owns, if you are viewing by property this is the properties that
+are in view (later AND the ones that match any filters)
+vm.currProps;
+
+//The currently selected landlord, this gets set when you are viewing a property to the owner
+of that property or if you are viewing by landlord it is the one you selected
+vm.currLandlord;

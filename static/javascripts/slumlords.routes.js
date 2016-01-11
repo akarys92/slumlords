@@ -12,7 +12,7 @@
           })
           .when('/home',{
                controller: 'HomeController',
-               controllerAs: 'vm',
+               controllerAs: 'home',
                templateUrl: '/static/templates/main/home.html'
           })
           .otherwise('/home');

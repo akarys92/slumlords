@@ -1,18 +1,20 @@
-//Make sure to include in HTML
+
 angular.module('slumlords.main.directives').directive('slumMap', function(){
 	return {
-		scope: false,
+		scope: {
+			properties: '=properties',
+		},
 		templateUrl: '/static/templates/snippets/mapTile.html',
 		controller: 'mapsController',
-		controllerAs: 'vm'
+		controllerAs: 'maps'
 	}
 })
 .controller('mapsController', function mapsController($scope, $location, Main){
 	
-	var vm = this;
+	var maps = this;
 	google.maps.event.addDomListener(window, 'load', buildMap);
-	//vm.currProps = [];
-	vm.map = {};
+	maps.properties = [];
+	maps.map = {};
 
 	function buildMap() {
 		var mapOptions ={
@@ -21,33 +23,33 @@ angular.module('slumlords.main.directives').directive('slumMap', function(){
 			disableDefaultUI: true
 		};
 		var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-		vm.map = map;
+		maps.map = map;
 		var markers = getPropsInBounds();		
 
-		vm.map.setZoom(vm.map.getZoom() - 1);
+		maps.map.setZoom(maps.map.getZoom() - 1);
 		var timeout;
-		vm.map.addListener('bounds_changed', function(){
+		maps.map.addListener('bounds_changed', function(){
 			window.clearTimeout(timeout);
 			timeout = window.setTimeout(function () {
 				var dims = getBounds();
 				var props = Main.getPropsByBounds(dims[0], dims[1], dims[2], dims[3]);
 				props.success(function(data, status, headers, config){
-					vm.properties = data;
+					$scope.properties = data;
 					getPropsInBounds();
 				}).
 				error(function(data, status, headers, config){
 					alert("Error in updatePropsInBounds!");
 				});
-				console.log(vm.properties);
+				console.log($scope.properties);
 			}, 500);
 
 		});
 		buildLegend();
 		function getBounds() {
-			var neLat = vm.map.getBounds().getNorthEast().lat();
-			var neLong = vm.map.getBounds().getNorthEast().lng();
-			var swLat = vm.map.getBounds().getSouthWest().lat();
-			var swLong = vm.map.getBounds().getSouthWest().lng();;
+			var neLat = maps.map.getBounds().getNorthEast().lat();
+			var neLong = maps.map.getBounds().getNorthEast().lng();
+			var swLat = maps.map.getBounds().getSouthWest().lat();
+			var swLong = maps.map.getBounds().getSouthWest().lng();;
     			return [neLat, neLong, swLat, swLong];
     			//updatePropsInBounds(neLat, neLong, swLat, swLong);
 		};
@@ -85,13 +87,13 @@ angular.module('slumlords.main.directives').directive('slumMap', function(){
 
 		};
 		
-		//console.log(vm.map.getBounds().getNorthEast().lat())
+		//console.log(maps.map.getBounds().getNorthEast().lat())
 	};
 	function getPropsInBounds () {
 		var markers = [];
-		var map = vm.map;
-		for (var prop in vm.properties) {
-			var property = vm.properties[prop];
+		var map = maps.map;
+		for (var prop in $scope.properties) {
+			var property = $scope.properties[prop];
 			var lat = property.lattitude;
 			var lng = property.longitude;
 			var icon = getMarkerIcon(property);
@@ -102,7 +104,7 @@ angular.module('slumlords.main.directives').directive('slumMap', function(){
 			      icon: icon,
 			      title: 'Hello World!'
 			});
-			//var llName = vm.currLandlord.name + " " + vm.currLandlord.last_name;
+			//var llName = maps.currLandlord.name + " " + maps.currLandlord.last_name;
 			var review = property.review;
 			var address = property.street_address;
 
@@ -120,8 +122,8 @@ angular.module('slumlords.main.directives').directive('slumMap', function(){
 		for(var i in markers) {
 			bounds.extend(markers[i].getPosition());
 		}
-		//vm.map.setCenter(bounds.getCenter());
-		//vm.map.fitBounds(bounds);
+		//maps.map.setCenter(bounds.getCenter());
+		//maps.map.fitBounds(bounds);
 		return markers;
 
 	};
